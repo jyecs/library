@@ -52,3 +52,12 @@ table {
     color: white;
     font-size: 2rem;
 }
+
+.padding-10x4 {
+    padding: 10px 10px 10px 10px;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+}

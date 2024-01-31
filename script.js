@@ -12,6 +12,7 @@ Book.prototype.toggleIsRead = function() {
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
+    renderLibrary();
 }
 
 let book1 = new Book("Title1", "Author1", false);
@@ -25,8 +26,9 @@ addBookToLibrary(book2);
 addBookToLibrary(book3);
 
 function renderLibrary() {
+    let library = document.querySelector(".library");
+    library.replaceChildren();
     myLibrary.forEach(book => {
-        let library = document.querySelector(".library");
         let bookContainer = document.createElement("div");
         let bookTitle = document.createElement("p");
         let bookAuthor = document.createElement("p");
@@ -43,3 +45,12 @@ function renderLibrary() {
 }
 
 renderLibrary();
+
+let newBookForm = document.getElementById("new-book-form");
+newBookForm.addEventListener("submit", e => {
+    e.preventDefault();
+    let bookTitle = document.querySelector("#title").value;
+    let bookAuthor = document.querySelector("#author").value;
+
+    addBookToLibrary(new Book(bookTitle, bookAuthor, false));
+});
