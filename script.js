@@ -47,7 +47,6 @@ function renderLibrary() {
 
         readBookButton.addEventListener("click", e=> {
             myLibrary[e.target.getAttribute("data-book-index")].toggleIsRead();
-            console.log(myLibrary);
             renderLibrary();
         });
 
@@ -62,6 +61,9 @@ function renderLibrary() {
         bookContainer.appendChild(deleteBookButton);
 
         bookContainer.classList.add("book");
+        if (book.isRead) {
+            bookContainer.classList.add("read");
+        }
         library.appendChild(bookContainer);
     });
 }
