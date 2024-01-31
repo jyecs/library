@@ -1,7 +1,7 @@
 const myLibrary = [];
 
-function Book(name, author, isRead) {
-    this.name = name;
+function Book(title, author, isRead) {
+    this.title = title;
     this.author = author;
     this.isRead = isRead;
 }
@@ -25,3 +25,22 @@ addBookToLibrary(book2);
 addBookToLibrary(book3);
 
 console.log(myLibrary);
+
+function renderLibrary() {
+    myLibrary.forEach(book => {
+        let library = document.querySelector(".library");
+        let bookContainer = document.createElement("div");
+        let bookTitle = document.createElement("p");
+        let bookAuthor = document.createElement("p");
+
+        bookTitle.innerHTML = `${book.title}`;
+        bookAuthor.innerHTML = `${book.author}`;
+
+        bookContainer.appendChild(bookTitle);
+        bookContainer.appendChild(bookAuthor);
+
+        library.appendChild(bookContainer);
+    });
+}
+
+renderLibrary();
