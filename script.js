@@ -24,8 +24,6 @@ addBookToLibrary(book1);
 addBookToLibrary(book2);
 addBookToLibrary(book3);
 
-console.log(myLibrary);
-
 function renderLibrary() {
     myLibrary.forEach(book => {
         let library = document.querySelector(".library");
@@ -39,6 +37,7 @@ function renderLibrary() {
         bookContainer.appendChild(bookTitle);
         bookContainer.appendChild(bookAuthor);
 
+        bookContainer.classList.add("book");
         library.appendChild(bookContainer);
     });
 }
