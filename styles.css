@@ -50,14 +50,32 @@ table {
 .book {
     background-color: lightblue;
     color: white;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .padding-10x4 {
     padding: 10px 10px 10px 10px;
 }
 
+.soft-border {
+    border-radius: 10px;
+}
+
 body {
     display: grid;
     grid-template-columns: 1fr 6fr;
+}
+
+.library {
+    height: 50rem;
+    width: 60rem;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    background-color: grey;
 }

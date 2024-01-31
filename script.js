@@ -27,17 +27,39 @@ addBookToLibrary(book3);
 
 function renderLibrary() {
     let library = document.querySelector(".library");
-    library.replaceChildren();
+    library.replaceChildren()
+    let count = 0;
     myLibrary.forEach(book => {
+        let indexOfLibrary = count;
+        count++;
         let bookContainer = document.createElement("div");
         let bookTitle = document.createElement("p");
         let bookAuthor = document.createElement("p");
+        let readBookButton = document.createElement("button");
+        readBookButton.setAttribute("data-book-index", indexOfLibrary);
+        let deleteBookButton = document.createElement("button");
+        deleteBookButton.setAttribute("data-book-index", indexOfLibrary);
+
+        deleteBookButton.addEventListener("click", e=> {
+            myLibrary.splice(e.target.getAttribute("data-book-index"), 1);
+            renderLibrary();
+        });
+
+        readBookButton.addEventListener("click", e=> {
+            myLibrary[e.target.getAttribute("data-book-index")].toggleIsRead();
+            console.log(myLibrary);
+            renderLibrary();
+        });
 
         bookTitle.innerHTML = `${book.title}`;
         bookAuthor.innerHTML = `${book.author}`;
+        readBookButton.innerHTML = "Read";
+        deleteBookButton.innerHTML = "Delete";
 
         bookContainer.appendChild(bookTitle);
         bookContainer.appendChild(bookAuthor);
+        bookContainer.appendChild(readBookButton);
+        bookContainer.appendChild(deleteBookButton);
 
         bookContainer.classList.add("book");
         library.appendChild(bookContainer);
